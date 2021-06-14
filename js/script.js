@@ -36,6 +36,8 @@ clear.onclick = () => {
     female.className = 'form-check-input';
     areDetailsValid = false;
     detailsAdded = false;
+    opacity = 0;
+    intervalID = 0;
 }
 
 inpName.addEventListener('change', updateValue);
@@ -67,6 +69,7 @@ submit.onclick = () => {
     if (valid && !detailsAdded) {
         console.log('All details are valid');
         addDetailsinTable();
+        fadeIn();
     }
 }
 
@@ -161,11 +164,15 @@ function Validation() {
 
 }
 
+var row;
+
 function addDetailsinTable() {
     console.log('adding details');
 
     // Adding a row in table
-    var row = table.insertRow(-1);
+    row = table.insertRow(-1);
+    row.style.visibility = 'hidden';
+    // row.className = 'fade';
 
     // Adding cells in row
     var cell1 = row.insertCell(0);
@@ -230,6 +237,26 @@ function addDetailsinTable() {
     // image.style.height = '150px';
     cell2.appendChild(image);
 
-
     detailsAdded = true;
+}
+
+var opacity = 0;
+var intervalID = 0;
+
+function fadeIn() {
+    row.style.opacity = 0;
+    intervalID = setInterval(show, 200);
+}
+
+function show() {
+    // opacity = Number(window.getComputedStyle(element).getPropertyValue("opacity"));
+    row.style.visibility = 'visible';
+    console.log(opacity);
+    if (opacity < 1) {
+        opacity = opacity + 0.1;
+        row.style.opacity = opacity
+    } else {
+        console.log('stop fade in');
+        clearInterval(intervalID);
+    }
 }
