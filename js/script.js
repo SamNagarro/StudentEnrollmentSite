@@ -1,4 +1,4 @@
-var table = document.getElementById('studentTable');
+var table = document.getElementById('table_body');
 var form = document.getElementById('detailForm');
 var submit = document.getElementById('submit');
 var clear = document.getElementById('clear');
@@ -37,7 +37,6 @@ clear.onclick = () => {
     areDetailsValid = false;
     detailsAdded = false;
     opacity = 0;
-    intervalID = 0;
 }
 
 inpName.addEventListener('change', updateValue);
@@ -219,23 +218,32 @@ function addDetailsinTable() {
     // Adding all skills in list
     list.appendChild(li);
 
-    // Adding the list in cell1
-    cell1.appendChild(list);
+    // Creating a div for 1st cell
+    var dataDiv = document.createElement('div');
+    dataDiv.appendChild(list);
 
-    // cell2.style = 'white-space: nowrap;';
-    cell2.width = '1%';
-    // Creating image tag
+    // Adding the list in cell1
+    cell1.appendChild(dataDiv);
+
+    cell2.style = 'white-space: nowrap;';
+    cell2.width = '35%';
+
+    // Creating a div for  2nd cell
+    var imageDiv = document.createElement('div');
+    imageDiv.style.width = '100%';
+    imageDiv.style.height = '100%';
+
+    // // Creating image tag
     var image = document.createElement('img');
-    // image.className = 'responsive';
+    image.className = 'responsive';
     image.src = imgLink.value;
-    // image.style.maxWidth = '100%';
-    // image.style.maxHeight = '100%';
-    image.width = '150';
-    image.height = '150';
-    // image.style.width = '100%';
-    // image.style.width = '150px';
-    // image.style.height = '150px';
-    cell2.appendChild(image);
+    image.style.maxHeight = '127px';
+    image.style.maxWidth = '100%';
+    image.style.minHeight = '85px';
+    image.style.minWidth = '85px';
+
+    imageDiv.appendChild(image);
+    cell2.appendChild(imageDiv);
 
     detailsAdded = true;
 }
@@ -249,7 +257,6 @@ function fadeIn() {
 }
 
 function show() {
-    // opacity = Number(window.getComputedStyle(element).getPropertyValue("opacity"));
     row.style.visibility = 'visible';
     console.log(opacity);
     if (opacity < 1) {

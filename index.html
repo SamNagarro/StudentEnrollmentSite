@@ -30,7 +30,7 @@
         }
         
         .responsive {
-            width: 100%;
+            /* width: 100%; */
             height: auto;
         }
     </style>
@@ -151,15 +151,19 @@
                 <center>
                     <h3>Enrolled Students</h3>
                 </center>
-                <table class="table table-responsive" id="studentTable">
-                    <thead class="table-success">
-                        <tr>
-                            <th>Description</th>
-                            <th>Image</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table_body"></tbody>
-                </table>
+                <div class="table-responsive-md">
+                    <table class="table table-sm table-stripped table-bordered align-top table-success" id="studentTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Description</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-success table-stripped" id="table_body">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
